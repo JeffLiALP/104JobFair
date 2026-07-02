@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALP · 2026 104 職涯博覽會</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --y:#FAF054;--k:#000;--w:#fff;
+      --g2:#333;--g3:#666;--g4:#999;--g5:#ddd;--g6:#f2f2f2;--g7:#f9f9f9;
+      --red:#D94040;
+      font-family:'Noto Sans TC','Outfit',sans-serif;
+    }
+    body{background:var(--w);color:var(--k);}
+
+    .topbar{background:var(--k);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:22px;letter-spacing:5px;color:var(--w);}
+    .logo em{color:var(--y);font-style:normal;}
+    .tag{background:var(--y);color:var(--k);font-size:11px;font-weight:700;padding:4px 14px;letter-spacing:1px;font-family:'Outfit',sans-serif;}
+
+    .hero{background:var(--w);padding:48px 32px 44px;border-bottom:4px solid var(--k);}
+    .hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--g4);margin-bottom:16px;}
+    .hero-h{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(28px,5.5vw,56px);line-height:1.0;color:var(--k);}
+    .hero-h span{background:var(--y);color:var(--k);padding:2px 10px;}
+    .hero-divider{width:60px;height:4px;background:var(--k);margin:20px 0;}
+    .hero-meta{display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--g5);}
+    .hero-m{flex:1;min-width:120px;padding:16px 20px;border-right:1px solid var(--g5);}
+    .hero-m:last-child{border-right:none;}
+    .hero-m label{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--g4);display:block;margin-bottom:6px;text-transform:uppercase;}
+    .hero-m strong{font-family:'Outfit',sans-serif;font-weight:700;font-size:17px;color:var(--k);display:block;}
+
+    .section{padding:36px 32px 0;}
+    .sec-hd{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+    .sec-n{background:var(--k);color:var(--y);font-family:'Outfit',sans-serif;font-weight:900;font-size:11px;padding:4px 10px;letter-spacing:1px;}
+    .sec-t{font-family:'Outfit',sans-serif;font-weight:700;font-size:18px;letter-spacing:2px;color:var(--k);}
+
+    .tl{display:flex;flex-direction:column;border:1px solid var(--g5);}
+    .tl-row{display:grid;grid-template-columns:130px 1fr;border-bottom:1px solid var(--g5);}
+    .tl-row:last-child{border-bottom:none;}
+    .tl-time{background:var(--g7);padding:16px 18px;border-right:3px solid var(--k);font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;color:var(--k);display:flex;align-items:center;line-height:1.5;}
+    .tl-time.red{border-right-color:var(--red);color:var(--red);background:#fff8f8;}
+    .tl-body{padding:14px 18px;}
+    .tl-label{font-weight:700;font-size:14px;color:var(--k);margin-bottom:5px;}
+    .tl-detail{font-size:12px;color:var(--g3);line-height:1.7;}
+    .tl-detail b{color:var(--k);}
+
+    .park{border:2px solid var(--k);padding:22px 24px;margin:20px 0 0;}
+    .park-t{font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+    .park-t::before{content:'P';background:var(--k);color:var(--y);font-size:13px;font-weight:900;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;flex-shrink:0;}
+    .park-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .pi label{font-size:10px;letter-spacing:2px;color:var(--g4);display:block;margin-bottom:3px;text-transform:uppercase;}
+    .pi strong{font-size:14px;color:var(--k);font-weight:700;display:block;}
+    .pi small{font-size:11px;color:var(--g4);margin-top:2px;display:block;}
+    .warn-strip{background:var(--y);padding:10px 14px;margin-top:14px;font-size:12px;color:var(--k);font-weight:500;}
+
+    .band{display:flex;gap:1px;background:var(--g5);}
+    .band-item{flex:1;padding:14px 16px;background:var(--w);}
+    .band-time{font-family:'Outfit',sans-serif;font-weight:700;font-size:12px;color:var(--k);margin-bottom:8px;border-bottom:3px solid var(--y);padding-bottom:5px;}
+    .band-names{font-size:12px;color:var(--g2);line-height:1.8;}
+    .band-names b{display:block;font-size:9px;letter-spacing:2px;color:var(--g4);margin-top:8px;margin-bottom:2px;text-transform:uppercase;}
+
+    .att-table{width:100%;border-collapse:collapse;}
+    .att-table th{background:var(--k);color:var(--y);font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;padding:10px 14px;text-align:left;letter-spacing:1px;}
+    .att-table td{padding:10px 14px;font-size:12px;color:var(--g2);border-bottom:1px solid var(--g6);}
+    .att-table tr:last-child td{border-bottom:none;}
+    .att-table tr:hover td{background:var(--g7);}
+    .att-name{color:var(--k);font-weight:700;font-size:13px;}
+    .att-dept{font-size:10px;color:var(--g4);margin-top:1px;}
+    .chk{color:#2a8a2a;font-weight:700;text-align:center;}
+    .dash{color:var(--g5);text-align:center;}
+    .chip{background:var(--g6);border:1px solid var(--g5);font-size:10px;padding:2px 7px;display:inline-block;color:var(--k);margin-top:3px;}
+
+    .sup{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--g5);}
+    .sup-item{background:var(--w);padding:18px 18px 20px;border-top:3px solid var(--k);}
+    .sup-item.off{border-top-color:var(--g5);opacity:.4;}
+    .sup-q{font-family:'Outfit',sans-serif;font-weight:900;font-size:30px;line-height:1;color:var(--k);}
+    .sup-item.off .sup-q{text-decoration:line-through;color:var(--g4);}
+    .sup-u{font-size:11px;color:var(--g3);}
+    .sup-n{font-size:12px;color:var(--g2);margin-top:5px;}
+    .sup-note{font-size:10px;color:var(--g4);margin-top:3px;}
+
+    .pos-list{border:1px solid var(--g5);}
+    .pos-item{display:grid;grid-template-columns:1fr 72px;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--g5);}
+    .pos-item:last-child{border-bottom:none;}
+    .pos-item:hover{background:var(--g7);}
+    .pos-zh{font-weight:700;font-size:14px;color:var(--k);}
+    .pos-en{font-size:11px;color:var(--g4);margin-top:2px;}
+    .pos-bp{background:var(--k);color:var(--y);font-size:11px;font-weight:700;padding:4px 10px;text-align:center;font-family:'Outfit',sans-serif;letter-spacing:1px;}
+
+    .it-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--g5);}
+    .it-card{background:var(--w);padding:22px 22px 26px;border-top:4px solid var(--y);}
+    .it-card-num{font-family:'Outfit',sans-serif;font-weight:900;font-size:10px;letter-spacing:2px;color:var(--g4);margin-bottom:8px;}
+    .it-card-t{font-weight:700;font-size:15px;color:var(--k);margin-bottom:3px;}
+    .it-card-en{font-size:11px;color:var(--g4);margin-bottom:10px;}
+    .it-card-mentor{font-size:11px;color:var(--g3);margin-bottom:12px;padding:8px 10px;background:var(--g7);border-left:3px solid var(--k);line-height:1.6;}
+    .it-sec{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--g4);text-transform:uppercase;margin:12px 0 6px;}
+    .it-list{list-style:none;padding:0;}
+    .it-list li{font-size:12px;color:var(--g2);line-height:1.6;padding-left:14px;position:relative;margin-bottom:3px;}
+    .it-list li::before{content:'—';position:absolute;left:0;color:var(--k);font-weight:700;}
+    .it-skills{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;}
+    .skill{background:var(--g6);font-size:10px;padding:3px 8px;color:var(--k);font-family:'Outfit',sans-serif;border:1px solid var(--g5);}
+
+    .extra-pos{border:1px solid var(--g5);border-left:4px solid var(--y);padding:18px 20px;margin-top:16px;background:var(--g7);}
+    .extra-pos-t{font-weight:700;font-size:14px;color:var(--k);margin-bottom:8px;}
+    .extra-pos-body{font-size:12px;color:var(--g3);line-height:1.8;}
+    .extra-pos-body b{color:var(--k);}
+
+    .notice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--g5);}
+    .n-card{background:var(--w);padding:20px 20px 24px;}
+    .n-card.yel{border-top:3px solid var(--y);}
+    .n-card.blk{border-top:3px solid var(--k);}
+    .n-card.red-t{border-top:3px solid var(--red);}
+    .n-tag{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--g4);margin-bottom:8px;text-transform:uppercase;}
+    .n-title{font-weight:700;font-size:15px;color:var(--k);margin-bottom:10px;}
+    .n-body{font-size:12px;color:var(--g3);line-height:1.8;}
+    .n-body b{color:var(--k);}
+
+    .sublabel{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--g4);margin-bottom:12px;text-transform:uppercase;}
+    .div{height:1px;background:var(--g5);margin:36px 32px 0;}
+    .footer{background:var(--k);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;margin-top:60px;}
+    .footer-l{font-family:'Outfit',sans-serif;font-weight:900;font-size:12px;letter-spacing:3px;color:var(--y);}
+    .footer-r{font-size:11px;color:#555;text-align:right;line-height:1.7;}
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="logo">ALP<em> ·</em></div>
+    <div class="tag">7/04 · 104 職涯博覽會</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-eyebrow">ALLY LOGISTIC PROPERTY ／ 永聯物流開發</div>
+    <div class="hero-h">2026 104<br><span>職涯博覽會</span></div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta">
+      <div class="hero-m"><label>活動日期</label><strong>2026.07.04 SAT</strong></div>
+      <div class="hero-m"><label>攤位</label><strong>246・247 · B 區</strong></div>
+      <div class="hero-m"><label>活動時間</label><strong>09:30 – 17:00</strong></div>
+      <div class="hero-m"><label>企業報到</label><strong>08:30 – 09:00</strong></div>
+      <div class="hero-m"><label>場佈</label><strong>7/03 FRI</strong></div>
+      <div class="hero-m"><label>出席人員</label><strong>17 人</strong></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-hd"><div class="sec-n">01</div><div class="sec-t">報到 · 交通 · 停車</div></div>
+    <div class="tl">
+      <div class="tl-row"><div class="tl-time">08:30–09:00</div><div class="tl-body"><div class="tl-label">企業報到</div><div class="tl-detail">HR 先遣至攤位 <b>246・247</b> 報到、領識別證、確認分工與物資</div></div></div>
+      <div class="tl-row"><div class="tl-time">09:00<br>早班集合</div><div class="tl-body"><div class="tl-label">早上班別 · 集合地點</div><div class="tl-detail">早上班別人員 <b>09:00</b> 於 <b>世貿一館 B 區前方拱門</b> 集合，由 HR 統一帶入攤位</div></div></div>
+      <div class="tl-row"><div class="tl-time">中 / 下午班</div><div class="tl-body"><div class="tl-label">中午 · 下午班別 · 報到方式</div><div class="tl-detail">抵達後請於 <b>LINE 工作群</b> 發訊息，攤位會有 <b>HR 前往拱門／入口接人</b> 進場</div></div></div>
+      <div class="tl-row"><div class="tl-time">捷運 · 建議</div><div class="tl-body"><div class="tl-label">淡水信義線「台北 101／世貿站」</div><div class="tl-detail">出口 <b>5 號</b> 或 <b>1 號</b>，步行約 <b>2 分鐘</b> 抵達世貿一館</div></div></div>
+      <div class="tl-row"><div class="tl-time">公車</div><div class="tl-body"><div class="tl-label">世貿中心 ／ 信義行政中心 站</div><div class="tl-detail">信義幹線、信義新幹線、5、20、22、37、38、207、226、藍 5 等</div></div></div>
+      <div class="tl-row"><div class="tl-time">開車 · 停車</div><div class="tl-body"><div class="tl-label">鄰近停車場</div><div class="tl-detail">世貿一館地下停車場｜市府前廣場地下停車場（松壽路 1 號）｜嘟嘟房世貿一館站（展期 100 元/時）</div></div></div>
+      <div class="tl-row"><div class="tl-time red">17:00</div><div class="tl-body"><div class="tl-label">活動結束 · 撤場</div><div class="tl-detail">17:00–18:00 撤輕型／手提展品（車輛不得入場）；18:00–22:00 撤除全部裝潢</div></div></div>
+    </div>
+    <div class="warn-strip">7/4 為週末活動日、人潮多，<b>建議搭乘捷運</b>前往並預留報到時間；停車繳費記得輸入公司統編 <b>54642712</b>。</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-hd"><div class="sec-n">02</div><div class="sec-t">當日排班 · 三時段</div></div>
+    <div class="band">
+      <div class="band-item"><div class="band-time">09:30 – 12:00</div><div class="band-names"><b>部門人員</b>Ajay（IT）、Nadia（BM）<b>HR ／ ACS-HR</b>Jeff、Tina、Daniel、Daphne、Michelle、Gill</div></div>
+      <div class="band-item"><div class="band-time">12:00 – 14:30</div><div class="band-names"><b>部門人員</b>Sandy（IT）、Ajay（IT）、Ethan（TEL）、Nadia（至13:00）<b>HR ／ ACS-HR</b>Tina、Winny、Daniel、Lewis、Jenny、Daphne、Ivy、Amber</div></div>
+      <div class="band-item"><div class="band-time">14:30 – 17:00</div><div class="band-names"><b>部門人員</b>Sandy（IT）、Ethan（TEL）、Jason（PD 至16:00）<b>HR ／ ACS-HR</b>Jeff、Winny、Jenny、Lewis、Michelle、Ivy、Amber、Gill、Audrey</div></div>
+    </div>
+    <div class="warn-strip">原則每人排兩個時段（特定時段者除外）。各時段人數：早 8 ｜ 中 12 ｜ 下 13（實際依到場微調）。</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-hd"><div class="sec-n">03</div><div class="sec-t">個人出勤總覽</div></div>
+    <table class="att-table">
+      <thead><tr><th>姓名 / 部門</th><th>早<br>09:30–12:00</th><th>中<br>12:00–14:30</th><th>下<br>14:30–17:00</th><th>額外任務 / 備註</th></tr></thead>
+      <tbody><tr><td><div class="att-name">Jeff</div><div class="att-dept">HR 總召</div></td><td class="chk">✓</td><td class="dash">—</td><td class="chk">✓</td><td>HR 總召 · iMac 攜帶</td></tr><tr><td><div class="att-name">Tina</div><div class="att-dept">HR</div></td><td class="chk">✓</td><td class="chk">✓</td><td class="dash">—</td><td>—</td></tr><tr><td><div class="att-name">Winny</div><div class="att-dept">HR</div></td><td class="dash">—</td><td class="chk">✓</td><td class="chk">✓</td><td>協助訂午餐（統編＋外送袋）</td></tr><tr><td><div class="att-name">Daniel</div><div class="att-dept">HR</div></td><td class="chk">✓</td><td class="chk">✓</td><td class="dash">—</td><td>通知各班別</td></tr><tr><td><div class="att-name">Lewis</div><div class="att-dept">HR</div></td><td class="dash">—</td><td class="chk">✓</td><td class="chk">✓</td><td>協助訂午餐 · iMac 攜帶</td></tr><tr><td><div class="att-name">Jenny</div><div class="att-dept">HR</div></td><td class="dash">—</td><td class="chk">✓</td><td class="chk">✓</td><td>—</td></tr><tr><td><div class="att-name">Daphne</div><div class="att-dept">ACS-HR</div></td><td class="chk">✓</td><td class="chk">✓</td><td class="dash">—</td><td>—</td></tr><tr><td><div class="att-name">Michelle</div><div class="att-dept">ACS-HR</div></td><td class="chk">✓</td><td class="dash">—</td><td class="chk">✓</td><td>—</td></tr><tr><td><div class="att-name">Ivy</div><div class="att-dept">ACS-HR</div></td><td class="dash">—</td><td class="chk">✓</td><td class="chk">✓</td><td>—</td></tr><tr><td><div class="att-name">Amber</div><div class="att-dept">ACS-HR</div></td><td class="dash">—</td><td class="chk">✓</td><td class="chk">✓</td><td>—</td></tr><tr><td><div class="att-name">Gill</div><div class="att-dept">ACS-HR</div></td><td class="chk">✓</td><td class="dash">—</td><td class="chk">✓</td><td>—</td></tr><tr><td><div class="att-name">Audrey</div><div class="att-dept">ACS-HR</div></td><td class="dash">—</td><td class="dash">—</td><td class="chk">✓</td><td>限下午</td></tr><tr><td><div class="att-name">Sandy</div><div class="att-dept">IT</div></td><td class="dash">—</td><td class="chk">✓</td><td class="chk">✓</td><td>中午＋下午</td></tr><tr><td><div class="att-name">Ajay</div><div class="att-dept">IT</div></td><td class="chk">✓</td><td class="chk">✓</td><td class="dash">—</td><td>早上＋中午</td></tr><tr><td><div class="att-name">Nadia</div><div class="att-dept">BM</div></td><td class="chk">✓</td><td class="chk">✓</td><td class="dash">—</td><td>09:30–13:00</td></tr><tr><td><div class="att-name">Jason</div><div class="att-dept">PD</div></td><td class="dash">—</td><td class="dash">—</td><td class="chk">✓</td><td>主管 · 至 16:00</td></tr><tr><td><div class="att-name">Ethan</div><div class="att-dept">TEL</div></td><td class="dash">—</td><td class="chk">✓</td><td class="chk">✓</td><td>時段待確認</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="sec-hd"><div class="sec-n">04</div><div class="sec-t">物資清單</div></div>
+    <div class="sup"><div class="sup-item"><div class="sup-q">400</div><div class="sup-u">支</div><div class="sup-n">ALP 黑筆</div><div class="sup-note">社群擇一關注即贈</div></div><div class="sup-item"><div class="sup-q">200</div><div class="sup-u">個</div><div class="sup-n">帆布袋</div><div class="sup-note">問卷＋社群擇一 → 贈袋＋扭蛋 1 次</div></div><div class="sup-item"><div class="sup-q">400</div><div class="sup-u">張</div><div class="sup-n">職缺 DM</div><div class="sup-note">重新製作、定稿印製</div></div><div class="sup-item"><div class="sup-q">15</div><div class="sup-u">本</div><div class="sup-n">ALP 筆記本</div><div class="sup-note">扭蛋獎項</div></div><div class="sup-item"><div class="sup-q">3</div><div class="sup-u">個</div><div class="sup-n">保溫杯</div><div class="sup-note">扭蛋大獎</div></div><div class="sup-item"><div class="sup-q">1</div><div class="sup-u">台</div><div class="sup-n">扭蛋機</div><div class="sup-note">每顆都有獎（需先分裝）</div></div><div class="sup-item"><div class="sup-q">4</div><div class="sup-u">個</div><div class="sup-n">QR L 型立架</div><div class="sup-note">填問卷用，連 104 公司頁</div></div><div class="sup-item"><div class="sup-q">1–2</div><div class="sup-u">座</div><div class="sup-n">易拉展</div><div class="sup-note">＝公司介紹看板（數量待確認）</div></div><div class="sup-item"><div class="sup-q">1</div><div class="sup-u">塊</div><div class="sup-n">清明上河圖版子</div><div class="sup-note">自公司攜帶至現場展示</div></div><div class="sup-item"><div class="sup-q">1</div><div class="sup-u">台</div><div class="sup-n">iMac</div><div class="sup-note">含滑鼠、鍵盤、充電線｜Jeff & Lewis 攜帶</div></div><div class="sup-item"><div class="sup-q">1</div><div class="sup-u">台</div><div class="sup-n">公用電腦</div><div class="sup-note">現場後台確認與註記人選</div></div><div class="sup-item"><div class="sup-q">2</div><div class="sup-u">條</div><div class="sup-n">充電線</div><div class="sup-note"></div></div><div class="sup-item"><div class="sup-q">2</div><div class="sup-u">條</div><div class="sup-n">ALP 桌巾</div><div class="sup-note">請先燙平</div></div><div class="sup-item"><div class="sup-q">1</div><div class="sup-u">組</div><div class="sup-n">延長線／排插</div><div class="sup-note">現場每攤僅 1 個 110V/5A 插座</div></div><div class="sup-item off"><div class="sup-q">0</div><div class="sup-u"></div><div class="sup-n">紅絨柱</div><div class="sup-note">本次不用</div></div><div class="sup-item off"><div class="sup-q">0</div><div class="sup-u"></div><div class="sup-n">行動電源</div><div class="sup-note">本次不帶</div></div></div>
+    <div class="warn-strip">另備：平板／iPad（選配，求職者多用自己手機掃 QR）；文具包、收納箱、濕紙巾／垃圾袋、名片、飲用水／喉糖。大會標準攤位含 IBM 桌、椅、攤招、背板、隔板、夾燈、110V/5A 插座（雙格配備 ×2 組）。</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-hd"><div class="sec-n">05</div><div class="sec-t">接待 · 抽獎 · 收件</div></div>
+    <div class="notice-grid">
+      <div class="n-card blk"><div class="n-tag">ENGAGE · ROUTING</div><div class="n-title">接待與分流流程</div><div class="n-body">
+        <b>1.</b> HR／ACS-HR 主動招呼、介紹 ALP 與活動，引起興趣<br>
+        <b>2.</b> 有 <b>IT／PD／TEL</b> 在場 → 由部門人員介紹工作內容；暫無 → 直接下一步<br>
+        <b>3.</b> 邀請有意求職者掃 QR 填問卷<br>
+        <b>4.</b> <b>HR 確認完成 → 發扭蛋與贈品</b>、彙整名單
+      </div></div>
+      <div class="n-card yel"><div class="n-tag">LUCKY DRAW</div><div class="n-title">抽獎與贈品機制</div><div class="n-body">
+        關注社群擇一（FB／LinkedIn／104）→ <b>ALP 黑筆</b><br>
+        填問卷 ＋ 社群擇一 → <b>帆布袋 ＋ 扭蛋 1 次</b><br>
+        扭蛋<b>每顆都有獎</b>：保溫杯（大獎 ×3）、ALP 筆記本 ×15<br>
+        <b>公用電腦</b>：遇合適人選即時進後台註記，勿等活動後補登
+      </div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-hd"><div class="sec-n">06</div><div class="sec-t">去年參與者背景 · 供接待參考</div></div>
+    <div class="sup">
+      <div class="sup-item"><div class="sup-q">200+</div><div class="sup-u"></div><div class="sup-n">參展企業</div></div>
+      <div class="sup-item"><div class="sup-q">30,000+</div><div class="sup-u"></div><div class="sup-n">報名人次</div></div>
+      <div class="sup-item"><div class="sup-q">18,000+</div><div class="sup-u"></div><div class="sup-n">進場人數</div></div>
+      <div class="sup-item"><div class="sup-q">88%+</div><div class="sup-u"></div><div class="sup-n">企業滿意媒合</div></div>
+    </div>
+    <table class="att-table" style="margin-top:20px;">
+      <thead><tr><th>輪廓項目</th><th>去年參與者資料（104 · 2025 進場者輪廓）</th></tr></thead>
+      <tbody>
+        <tr><td><div class="att-name">年齡</div></td><td><b style="color:var(--k)">20–34 歲 &gt; 70%</b>（25–29 佔 39%、30–34 佔 23%、20–24 佔 17%）</td></tr>
+        <tr><td><div class="att-name">身分</div></td><td>在職中 <b style="color:var(--k)">54%</b>、待業中 34%、學生／應屆 12%</td></tr>
+        <tr><td><div class="att-name">學歷</div></td><td>大學 <b style="color:var(--k)">59%</b>、碩博 35%；主修工程／電機／數學科系約 33%</td></tr>
+        <tr><td><div class="att-name">應徵職類</div></td><td>以研發／製造／資訊軟體職類約 <b style="color:var(--k)">49%</b> 為主，與 ALP 職缺高度契合</td></tr>
+      </tbody>
+    </table>
+    <div class="warn-strip">供工作人員與各部門參考：去年到場者以 <b>20–34 歲、在職中、工程／製造／資訊背景</b> 為核心，接洽時可據此調整話術與職缺推薦。</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-hd"><div class="sec-n">07</div><div class="sec-t">徵才職位 · 現有職缺</div></div>
+
+    <div class="sublabel">▎ 業務開發 / 智慧物流方案</div>
+    <div class="pos-list">
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">智慧物流 業務協理</a></div><div class="pos-en">Assistant Vice President, Business Development ｜ 10 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">智慧物流 商務開發主任</a></div><div class="pos-en">Supervisor, Business Development ｜ 5 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">業務開發經理（半導體）</a></div><div class="pos-en">Business Development Manager (Semiconductor Focus) ｜ 5 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">智慧物流 業務專員</a></div><div class="pos-en">Specialist, Business Development ｜ 1 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">智慧物流解決方案規劃師</a></div><div class="pos-en">Smart Logistics Solution Planner ｜ 經歷不拘</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">系統模擬工程師</a></div><div class="pos-en">Simulation Engineer ｜ 2 年以上</div></div><div class="pos-bp">桃園</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">智慧物流專案副理</a></div><div class="pos-en">Assistant Project Manager ｜ 3 年以上</div></div><div class="pos-bp">桃園</div></div>
+    </div>
+
+    <div class="sublabel" style="margin-top:20px;">▎ IT / 軟體開發</div>
+    <div class="pos-list">
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://vip.104.com.tw/job/jobmaster?jobno=15034614" target="_blank" style="color:inherit;text-decoration:underline;">軟體開發實習生</a></div><div class="pos-en">Software Engineer Intern ｜ 實習</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://vip.104.com.tw/job/jobmaster?jobno=15034764" target="_blank" style="color:inherit;text-decoration:underline;">IT 容器平台服務監控告警與維運實習生</a></div><div class="pos-en">SRE Intern ｜ 實習</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://vip.104.com.tw/job/jobmaster?jobno=15159133" target="_blank" style="color:inherit;text-decoration:underline;">JAVA 後端程式設計師（AI-Native）</a></div><div class="pos-en">Backend Engineer (AI-Native)</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://vip.104.com.tw/job/jobmaster?jobno=15159227" target="_blank" style="color:inherit;text-decoration:underline;">JAVA 資深後端程式設計師（AI-Native）</a></div><div class="pos-en">Senior Backend Engineer (AI-Native)</div></div><div class="pos-bp">台北</div></div>
+    </div>
+
+    <div class="sublabel" style="margin-top:20px;">▎ 自動化 / 電控工程</div>
+    <div class="pos-list">
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">大溪自動化設備工程師</a></div><div class="pos-en">Automation Equipment Engineer ｜ 3 年以上</div></div><div class="pos-bp">桃園</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">楊梅自動化設備工程師</a></div><div class="pos-en">Automation Equipment Engineer ｜ 3 年以上</div></div><div class="pos-bp">桃園</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">桃園資深電控工程師</a></div><div class="pos-en">Senior Electronic Control Engineer ｜ 3 年以上</div></div><div class="pos-bp">桃園</div></div>
+    </div>
+
+    <div class="sublabel" style="margin-top:20px;">▎ 營建 / 機電 / 建築</div>
+    <div class="pos-list">
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">營建管理經理</a></div><div class="pos-en">Construction Management Manager ｜ 8 年以上</div></div><div class="pos-bp">桃園</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">營建工程師</a></div><div class="pos-en">Construction Management ｜ 經歷不拘</div></div><div class="pos-bp">桃園</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">大溪機電工程管理副主任</a></div><div class="pos-en">Mechanical &amp; Electrical Management ｜ 3 年以上</div></div><div class="pos-bp">桃園</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">海外建築規劃專案</a></div><div class="pos-en">Architectural Project Designer ｜ 1 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">建築規劃設計</a></div><div class="pos-en">Architectural Designer ｜ 1 年以上</div></div><div class="pos-bp">台北</div></div>
+    </div>
+
+    <div class="sublabel" style="margin-top:20px;">▎ 品牌 / 行銷</div>
+    <div class="pos-list">
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://vip.104.com.tw/job/jobmaster?jobno=14675977" target="_blank" style="color:inherit;text-decoration:underline;">品牌視覺設計師</a></div><div class="pos-en">Brand Visual Designer</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://vip.104.com.tw/job/jobmaster?jobno=15155849" target="_blank" style="color:inherit;text-decoration:underline;">活動行銷企劃</a></div><div class="pos-en">Event Marketing Specialist</div></div><div class="pos-bp">台北</div></div>
+    </div>
+
+    <div class="sublabel" style="margin-top:20px;">▎ 物業管理 / 財會 / 人資</div>
+    <div class="pos-list">
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">物流園區廠務物管人員</a></div><div class="pos-en">Property Management ｜ 3 年以上</div></div><div class="pos-bp">桃園</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">財務協理</a></div><div class="pos-en">Assistant Vice President, FP&amp;A ｜ 10 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">財務分析 專員／主任</a></div><div class="pos-en">Senior Business Analyst, FP&amp;A ｜ 5 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">財務專員／副主任（資金管理與出納）</a></div><div class="pos-en">Specialist / Assistant Supervisor, Finance ｜ 2 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">子公司 主辦會計</a></div><div class="pos-en">Assistant Manager, Accounting ｜ 3 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">會計副主任</a></div><div class="pos-en">Assistant Supervisor, Accounting ｜ 3 年以上</div></div><div class="pos-bp">台北</div></div>
+      <div class="pos-item"><div><div class="pos-zh"><a href="https://www.104.com.tw/company/1a2x6bin4z?jobsource=company_joblist" target="_blank" style="color:inherit;text-decoration:underline;">人資事業夥伴</a></div><div class="pos-en">HR Business Partner ｜ 5 年以上</div></div><div class="pos-bp">台北</div></div>
+    </div>
+
+    <div class="warn-strip">以上為 <b>7/02</b> 於 104 擷取之「徵才中」職缺（全站共 <b>36</b> 筆，此處列出 28 項）；台北＝內湖總部、桃園＝大溪／楊梅園區，多數待遇面議。完整與最新職缺請引導求職者掃 QR 或搜尋 <b>104「永聯物流開發」</b>（company/1a2x6bin4z）。</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-hd"><div class="sec-n">08</div><div class="sec-t">注意事項</div></div>
+    <div class="notice-grid">
+      <div class="n-card yel"><div class="n-tag">DRESS CODE</div><div class="n-title">穿著</div><div class="n-body">公司 T-shirt ＋ 長褲，全程配戴 <b>識別證</b></div></div>
+      <div class="n-card blk"><div class="n-tag">CHECK-IN</div><div class="n-title">報到 · 集合</div><div class="n-body">早班 <b>09:00</b> 於 <b>B 區前方拱門</b> 集合，HR 帶入攤位；中／下午班抵達後於 <b>LINE 工作群</b> 發訊，HR 前往接人</div></div>
+      <div class="n-card blk"><div class="n-tag">SETUP</div><div class="n-title">場佈 · 撤場</div><div class="n-body">7/03（五）09:00–17:00 場佈（<b>15:00 後車輛禁入</b>，材料以手推車）；7/04 17:00 起撤場</div></div>
+      <div class="n-card red-t"><div class="n-tag">POWER</div><div class="n-title">用電</div><div class="n-body">現場每攤僅 <b>1 個 110V/5A 插座</b>，需<b>自備延長線</b>（僅供手機／筆電）</div></div>
+      <div class="n-card red-t"><div class="n-tag">NO SALES</div><div class="n-title">禁止銷售</div><div class="n-body">徵才區以就業媒合為主，<b>禁止任何銷售／推廣行為</b></div></div>
+      <div class="n-card yel"><div class="n-tag">MEAL · LOUNGE</div><div class="n-title">餐飲 · 休息室</div><div class="n-body">午餐由 <b>Winny & Lewis</b> 協助訂購（記得打統編 <b>54642712</b>、外送袋子）；用餐人數多時請同事協助取餐。休息室 <b>2F A4 會議室</b>，10:00 開放</div></div>
+      <div class="n-card blk"><div class="n-tag">SYSTEM</div><div class="n-title">公用電腦 · 後台</div><div class="n-body">遇合適人選 <b>即時</b> 進後台做人選註記，勿等到活動結束後才補登</div></div>
+      <div class="n-card blk"><div class="n-tag">CONTACT</div><div class="n-title">聯絡窗口</div><div class="n-body">現場總窗口 <b>Jeff Li</b>【電話】；裝潢／水電 安益國際 鄭力瑋 (02)2758-5450 #665</div></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-l">ALP · 2026 104 職涯博覽會</div>
+    <div class="footer-r">內部使用 · 當日作戰頁<br>2026.07.04（六）｜台北世貿一館 B 區 · 攤位 246・247</div>
+  </div>
+
+</body>
+</html>
